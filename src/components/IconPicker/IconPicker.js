@@ -94,7 +94,10 @@ const IconPicker = (props) => {
                   key={index}
                   type='button'
                   className='pick-button'
-                  onClick={() => handleSetIcon(Icon.name)}>
+                  onClick={() => {
+                    console.log(Icon);
+                    handleSetIcon(Icon.name);
+                  }}>
                   <Icon className='fi-icon' style={iconStyle} />
                 </button>
               );
