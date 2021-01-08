@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import Layout from './components/Layout/Layout';
+import IconPicker from './components/IconPicker/IconPicker';
+import DisplayIcon from './components/DisplayIcon/DisplayIcon';
+
+import './styles/global.scss';
+
+const App = () => {
+  const [picker, setPicker] = useState(false);
+  const [icon, setIcon] = useState('Tap');
+
+  const handlePickerState = (state) => {
+    setPicker(state);
+  };
+
+  const handleSetIcon = (pickedIcon) => {
+    if (pickedIcon) {
+      setIcon(pickedIcon);
+    }
+    setPicker(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <DisplayIcon icon={icon} handlePickerState={handlePickerState} />
+      <IconPicker open={picker} handleSetIcon={handleSetIcon} />
+    </Layout>
   );
-}
+};
 
 export default App;
