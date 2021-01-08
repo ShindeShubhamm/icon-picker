@@ -26,7 +26,7 @@ const IconPicker = (props) => {
     pickerWidth,
   } = props;
 
-  const maxIcons = Object.values(FiIcons).length;
+  const maxIcons = allIcons.length;
   const maxPages = Math.ceil(maxIcons / (rowsInOnePage * columnsInOnePage));
   const totalIconsOnPage = rowsInOnePage * columnsInOnePage;
 
@@ -45,7 +45,7 @@ const IconPicker = (props) => {
   };
 
   const pickerStyle = {
-    height: `${pickerHeight}px`,
+    maxHeight: `${pickerHeight}px`,
     width: `${pickerWidth}px`,
   };
 
@@ -53,7 +53,6 @@ const IconPicker = (props) => {
     if (type === 'next') {
       if (page < maxPages - 1) {
         setPage(page + 1);
-        // setIcons
       }
     } else if (type === 'prev') {
       if (page > 0) {
